@@ -11,7 +11,7 @@ class PostsBlocObserver extends BlocObserver {
     Transition<dynamic, dynamic> transition,
   ) {
     super.onTransition(bloc, transition);
-    print(transition);
+    print(transition.currentState);
   }
 
   @override

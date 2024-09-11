@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:posts/app.dart';
-import 'package:posts/presentation_layer/pages/add_post.dart';
+import 'package:posts/features/create_post/presentation_layer/pages/add_post.dart';
+import 'package:posts/service_locator.dart';
 
 void main() {
+  initServiceProvider();
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('''Checking Post feature''', (tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: MyApp())));
     /// Find Icon
     expect(find.byIcon(Icons.add), findsOneWidget);
     await tester.pumpAndSettle();
