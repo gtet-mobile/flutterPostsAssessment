@@ -13,3 +13,4 @@ Feature: PostsList
        And I tap {"Select a UserId"} dropDown
        And I see {"Submit"} button
        And I tap {"Submit"} button
+       And I see List View in Posts List Page
