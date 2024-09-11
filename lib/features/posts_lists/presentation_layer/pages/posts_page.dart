@@ -60,6 +60,7 @@ class _PostsPageState extends State<PostsPage> {
               return const Center(child: CircularProgressIndicator(key: Key("PostsPageLoadingIndicator"),));
             } else if (state is PostLoaded) {
               if (state.posts.isEmpty) {
+                print("jhgjhgj9");
                 return const Center(child: Text('No posts available'));
               }
 
@@ -86,6 +87,7 @@ class _PostsPageState extends State<PostsPage> {
                         showPostDetailDialog(context, post);
                       },
                       child: PostListItem(
+                    key: Key('list_item_$index'), // Assign a key to each item
                         post: post,
                       ),
                     );
@@ -146,17 +148,19 @@ class _PostsPageState extends State<PostsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('User ID: ${post.userId}'),
+          key: const Key("PostDetailAlertView"),
+          title: Text('User ID: ${post.userId}', key: const Key("PostDetailId"),),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 post.title,
+                key: const Key("PostDetailTitle"),
                 style:
                     const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
               ),
-              Text('Subtitle: ${post.body}'),
+              Text('Subtitle: ${post.body}', key: const Key("PostDetailBody"),),
               const SizedBox(height: 8),
             ],
           ),
