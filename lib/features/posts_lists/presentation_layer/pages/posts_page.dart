@@ -45,7 +45,10 @@ class _PostsPageState extends State<PostsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lists of posts", key: Key("HeaderTitle"),),
+        title: const Text(
+          "Lists of posts",
+          key: Key("HeaderTitle"),
+        ),
       ),
       body: BlocProvider(
         key: const Key("PostsPageBlocProvider"),
@@ -57,10 +60,12 @@ class _PostsPageState extends State<PostsPage> {
               print(
                   'PostLoading state detected'); // Log to check if this state is hit
 
-              return const Center(child: CircularProgressIndicator(key: Key("PostsPageLoadingIndicator"),));
+              return const Center(
+                  child: CircularProgressIndicator(
+                key: Key("PostsPageLoadingIndicator"),
+              ));
             } else if (state is PostLoaded) {
               if (state.posts.isEmpty) {
-                print("jhgjhgj9");
                 return const Center(child: Text('No posts available'));
               }
 
@@ -87,7 +92,8 @@ class _PostsPageState extends State<PostsPage> {
                         showPostDetailDialog(context, post);
                       },
                       child: PostListItem(
-                    key: Key('list_item_$index'), // Assign a key to each item
+                        key: Key('list_item_$index'),
+                        // Assign a key to each item
                         post: post,
                       ),
                     );
@@ -149,7 +155,10 @@ class _PostsPageState extends State<PostsPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           key: const Key("PostDetailAlertView"),
-          title: Text('User ID: ${post.userId}', key: const Key("PostDetailId"),),
+          title: Text(
+            'User ID: ${post.userId}',
+            key: const Key("PostDetailId"),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +169,10 @@ class _PostsPageState extends State<PostsPage> {
                 style:
                     const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
               ),
-              Text('Subtitle: ${post.body}', key: const Key("PostDetailBody"),),
+              Text(
+                'Subtitle: ${post.body}',
+                key: const Key("PostDetailBody"),
+              ),
               const SizedBox(height: 8),
             ],
           ),
